@@ -1,4 +1,4 @@
-# Flamewars. X is better than Y! Or is it?
+# #Flamewars. X is better than Y! Or is it?
 
 Disputes among computer scientists are probably as old as the computer itself. Who actually invented the computer? Konrad Zuse, Thomas Flowers or was it the Swiss? And what was the best editor again? VIM or Emacs? Admittedly, a good #Flamewar and the daily technology rant in the coffee kitchen among colleagues are fun and exhilarating. The discussions always have a true core, but are often not conducted fairly: the advantages of one are compared to the disadvantages of the other without throwing their advantages into the balance.
 
