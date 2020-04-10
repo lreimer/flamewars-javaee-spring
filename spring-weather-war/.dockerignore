@@ -1,3 +1,2 @@
-.mvn/
 .idea/
-src/
+target/
