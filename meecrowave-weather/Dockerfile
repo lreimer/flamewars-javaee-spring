@@ -6,7 +6,7 @@ COPY .mvn/ ./.mvn/
 COPY mvnw ./
 COPY pom.xml ./
 
-RUN ./mvnw package
+RUN ./mvnw dependency:resolve dependency:resolve-plugins
 
 COPY src/ src/
 RUN ./mvnw package meecrowave:bundle
