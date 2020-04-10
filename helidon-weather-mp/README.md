@@ -1,68 +1,34 @@
-# Helidon Quickstart MP Example
+# Helidon Weather MP Example
 
-This example implements a simple Hello World REST service using MicroProfile.
+This example implements a simple weather REST service using Helidon MP.
 
-## Build and run
+- https://helidon.io/#/
+- https://helidon.io/docs/latest/#/guides/03_quickstart-mp
+- https://start.microprofile.io
 
-With JDK8+
+## Build and run with JDK8+
+
 ```bash
-mvn package
-java -jar target/helidon-weather-mp.jar
+$ mvn package
+$ java -jar target/helidon-weather-mp.jar
+```
+
+## Build and run with Docker
+
+```bash
+$ docker build -t helidon-weather-mp:1.0.0 .
+$ docker run -it --rm -p 8080:8080 helidon-weather-mp:1.0.0
 ```
 
 ## Exercise the application
 
-```
-curl -X GET http://localhost:8080/greet
-{"message":"Hello World!"}
+```bash
+$ curl -X GET http://localhost:8080/api/weather                                                                           ─╯
+{"weather":"Sunshine"}
 
-curl -X GET http://localhost:8080/greet/Joe
-{"message":"Hello Joe!"}
+$ curl -X GET http://localhost:8080/api/weather\?city\=Rosenheim                                                          ─╯
+{"city":"Rosenheim","weather":"Sunshine"}
 
-curl -X PUT -H "Content-Type: application/json" -d '{"greeting" : "Hola"}' http://localhost:8080/greet/greeting
-
-curl -X GET http://localhost:8080/greet/Jose
-{"message":"Hola Jose!"}
-```
-
-## Try health and metrics
-
-```
-curl -s -X GET http://localhost:8080/health
-{"outcome":"UP",...
-. . .
-
-# Prometheus Format
-curl -s -X GET http://localhost:8080/metrics
-# TYPE base:gc_g1_young_generation_count gauge
-. . .
-
-# JSON Format
-curl -H 'Accept: application/json' -X GET http://localhost:8080/metrics
-{"base":...
-. . .
-
-```
-
-## Build the Docker Image
-
-```
-docker build -t helidon-weather-mp .
-```
-
-## Start the application with Docker
-
-```
-docker run --rm -p 8080:8080 helidon-weather-mp:latest
-```
-
-Exercise the application as described above
-
-## Deploy the application to Kubernetes
-
-```
-kubectl cluster-info                         # Verify which cluster
-kubectl get pods                             # Verify connectivity to cluster
-kubectl create -f app.yaml               # Deploy application
-kubectl get service helidon-weather-mp  # Verify deployed service
+$ curl -X GET http://localhost:8080/metrics
+$ curl -X GET http://localhost:8080/health
 ```
