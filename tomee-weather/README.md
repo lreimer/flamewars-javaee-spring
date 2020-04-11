@@ -1,8 +1,9 @@
 # Apache TomEE Weather Example
 
-This example implements a simple weather REST service using Aapche TomEE.
+This example implements a simple weather REST service using Apache TomEE.
 
 - https://start.microprofile.io
+- http://tomee.apache.org
 
 ## Build and run with JDK8+
 
