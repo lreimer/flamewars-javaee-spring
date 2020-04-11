@@ -1,13 +1,14 @@
 package cloud.nativ.flamewars;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.Stateless;
+import javax.enterprise.context.ApplicationScoped;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.concurrent.TimeUnit;
 
-@Stateless
+// @Stateless
+@ApplicationScoped
 public class TomeeWeatherRepository {
 
     private Map<String, TomeeWeather> weather = new HashMap<>();
