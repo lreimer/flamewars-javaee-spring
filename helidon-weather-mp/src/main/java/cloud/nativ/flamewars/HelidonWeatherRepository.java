@@ -20,7 +20,7 @@ public class HelidonWeatherRepository {
 
     public HelidonWeather getWeatherForCity(String city) {
         try {
-            TimeUnit.MILLISECONDS.sleep(ThreadLocalRandom.current().nextLong(500));
+            TimeUnit.MILLISECONDS.sleep(ThreadLocalRandom.current().nextLong(250));
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
