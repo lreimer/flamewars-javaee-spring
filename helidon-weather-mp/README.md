@@ -36,7 +36,7 @@ $ curl -X GET http://localhost:8080/health
 ## Load Testing 
 
 Assuming you have started InfluxDB and Grafana using Docker Compose from the root of this repository, you can now start
-the K6 load test for the TomEE Weather service.
+the K6 load test for the weather service.
 
 ```bash
 $ k6 run -u 50 -d 60s src/test/k6/helidon-weather.js -o influxdb=http://localhost:8086/k6
