@@ -1,6 +1,7 @@
 package cloud.nativ.flamewars;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.validation.constraints.NotBlank;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -12,10 +13,13 @@ import javax.ws.rs.core.MediaType;
 @ApplicationScoped
 public class HelidonWeatherResource {
 
+    @Inject
+    private HelidonWeatherRepository repository;
+
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public HelidonWeather getWeather(@QueryParam("city") @NotBlank String city) {
-        return new HelidonWeather(city, "Sunshine");
+        return repository.getWeatherForCity(city);
     }
 
 }
