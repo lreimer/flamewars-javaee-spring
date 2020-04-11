@@ -1,0 +1,8 @@
+kumuluzee:
+  name: kumuluzee-weather
+  version: 1.0.0
+  env:
+    name: dev
+  server:
+    http:
+      port: 8080
