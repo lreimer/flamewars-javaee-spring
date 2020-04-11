@@ -1,5 +1,10 @@
 .gradle/
 .idea/
+.vscode/
+.settings/
+
+.classpath
+.project
 
 *.iws
 *.iml
