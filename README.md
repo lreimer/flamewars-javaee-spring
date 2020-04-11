@@ -6,6 +6,20 @@ Disputes among computer scientists are probably as old as the computer itself. W
 
 In this edition of `#Flamewars. X is better than Y!` we are devoting ourselves to an epic dispute within the enterprise developer community, which has been fierce for almost 20 years now: Java EE vs. Spring.
 
+## The Contenders
+
+## Load Testing
+
+We will use K6 to perform some simple load testing of all the contenders. First, you need to fire up InfluxDB and Grafana for metrics visualization.
+
+```bash
+# start the Influx DB and Grafana container
+$ docker-compose up -d influxdb grafana
+
+$ open http://localhost:3000
+echo "Import the Grafana dashboard https://grafana.com/dashboards/2587"
+```
+
 ## Maintainer
 
 M.-Leander Reimer (@lreimer), <mario-leander.reimer@qaware.de>
