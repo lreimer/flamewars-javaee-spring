@@ -36,6 +36,8 @@ Assuming you have started InfluxDB and Grafana using Docker Compose from the roo
 the K6 load test for the TomEE Weather service.
 
 ```bash
+$ k6 run -u 50 -d 60s src/test/k6/tomee-weather.js -o influxdb=http://localhost:8086/k6
+
 $ k6 run -u 100 -d 120s src/test/k6/tomee-weather.js -o influxdb=http://localhost:8086/k6
 $ k6 run -u 0 -s 10s:100 -s 100s -s 10s:0 src/test/k6/tomee-weather.js -o influxdb=http://localhost:8086/k6
 ```
