@@ -20,7 +20,7 @@ public class TomeeWeatherRepository {
 
     public TomeeWeather getWeatherForCity(String city) {
         try {
-            TimeUnit.MILLISECONDS.sleep(ThreadLocalRandom.current().nextLong(500));
+            TimeUnit.MILLISECONDS.sleep(ThreadLocalRandom.current().nextLong(250));
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
