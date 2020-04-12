@@ -11,8 +11,11 @@ RUN ./mvnw dependency:resolve dependency:resolve-plugins
 COPY src/ src/
 RUN ./mvnw package -DskipTests
 
-# FROM gcr.io/distroless/java:8
-FROM openjdk:8
+FROM gcr.io/distroless/java:8
+
+# required for TomEE distribution to work
+COPY --from=amd64/busybox:1.31.1 /bin/busybox /busybox/busybox
+RUN ["/busybox/busybox", "--install", "/bin"]
 
 WORKDIR /tomee
 
