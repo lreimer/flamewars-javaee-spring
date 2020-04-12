@@ -11,8 +11,7 @@ RUN ./mvnw dependency:resolve dependency:resolve-plugins
 COPY src/ src/
 RUN ./mvnw package -DskipTests
 
-# FROM gcr.io/distroless/java:8
-FROM openjdk:8
+FROM gcr.io/distroless/java:8
 
 WORKDIR /kumuluzee
 
