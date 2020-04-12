@@ -13,7 +13,8 @@ RUN ./mvnw package -DskipTests
 
 FROM gcr.io/distroless/java:8
 
-# required for TomEE distribution to work
+RUN ["java", "-Xshare:dump"]
+
 COPY --from=amd64/busybox:1.31.1 /bin/busybox /busybox/busybox
 RUN ["/busybox/busybox", "--install", "/bin"]
 
@@ -21,7 +22,7 @@ WORKDIR /tomee
 
 EXPOSE 8080 8005 8009 9090
 
-ENTRYPOINT ["java","-XX:+UseContainerSupport", "-XX:MaxRAMPercentage=75.0", "-XX:ThreadStackSize=256", "-XX:MaxMetaspaceSize=128m", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=250", "-XX:+UseStringDeduplication", "-Dcom.sun.management.jmxremote", "-Dcom.sun.management.jmxremote.port=9090", "-Djava.rmi.server.hostname=localhost", "-Dcom.sun.management.jmxremote.rmi.port=9090", "-Dcom.sun.management.jmxremote.ssl=false", "-Dcom.sun.management.jmxremote.authenticate=false", "-jar", "/tomee/tomee-weather-exec.jar"]
+ENTRYPOINT ["java", "-server", "-Xshare:auto", "-XX:+UseContainerSupport", "-XX:MaxRAMPercentage=75.0", "-XX:ThreadStackSize=256", "-XX:MaxMetaspaceSize=128m", "-XX:+UseG1GC", "-XX:MaxGCPauseMillis=250", "-XX:+UseStringDeduplication", "-Dcom.sun.management.jmxremote", "-Dcom.sun.management.jmxremote.port=9090", "-Djava.rmi.server.hostname=localhost", "-Dcom.sun.management.jmxremote.rmi.port=9090", "-Dcom.sun.management.jmxremote.ssl=false", "-Dcom.sun.management.jmxremote.authenticate=false", "-jar", "/tomee/tomee-weather-exec.jar"]
 
 COPY --from=builder /tomee/target/tomee-weather-exec.jar ./
 
