@@ -25,6 +25,10 @@ $ k6 run -u 50 -d 60s kumuluzee-weather/src/test/k6/kumuluzee-weather.js -o infl
 
 $ k6 run -u 50 -d 60s meecrowave-weather/src/test/k6/meecrowave-weather.js -o influxdb=http://localhost:8086/k6
 
+$ k6 run -u 50 -d 60s payara-weather-jar/src/test/k6/payara-weather.js -o influxdb=http://localhost:8086/k6
+
+$ k6 run -u 50 -d 60s payara-weather-war/src/test/k6/payara-weather.js -o influxdb=http://localhost:8086/k6
+
 $ k6 run -u 50 -d 60s spring-weather-jar/src/test/k6/spring-weather.js -o influxdb=http://localhost:8086/k6
 
 $ k6 run -u 50 -d 60s spring-weather-war/src/test/k6/spring-weather.js -o influxdb=http://localhost:8086/k6
