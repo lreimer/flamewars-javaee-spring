@@ -33,6 +33,8 @@ $ k6 run -u 50 -d 60s spring-weather-jar/src/test/k6/spring-weather.js -o influx
 
 $ k6 run -u 50 -d 60s spring-weather-war/src/test/k6/spring-weather.js -o influxdb=http://localhost:8086/k6
 
+$ k6 run -u 50 -d 60s thorntail-weather/src/test/k6/thorntail-weather.js -o influxdb=http://localhost:8086/k6
+
 $ k6 run -u 50 -d 60s tomee-weather/src/test/k6/tomee-weather.js -o influxdb=http://localhost:8086/k6
 ```
 
