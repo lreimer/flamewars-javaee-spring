@@ -14,7 +14,7 @@
     <failOnMissingWebXml>false</failOnMissingWebXml>
     <maven.compiler.source>1.8</maven.compiler.source>
     <payaraVersion>5.201</payaraVersion>
-    <final.name>payara-micro-jar</final.name>
+    <final.name>payara-weather-jar</final.name>
   </properties>
 
   <dependencies>
@@ -34,7 +34,7 @@
   </dependencies>
 
   <build>
-    <finalName>payara-weather-jar</finalName>
+    <finalName>${final.name}</finalName>
   </build>
 
   <profiles>
@@ -66,6 +66,10 @@
               <commandLineOptions>
                 <option>
                   <key>--nocluster</key>
+                  <value/>
+                </option>
+                <option>
+                  <key>--disablephonehome</key>
                   <value/>
                 </option>
               </commandLineOptions>
