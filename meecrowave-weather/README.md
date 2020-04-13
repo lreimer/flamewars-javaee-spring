@@ -21,11 +21,10 @@ $ docker run -it --rm --cpus 2 --memory 512m -p 8080:8080 -p 9090:9090 meecrowav
 ## Exercise the application
 
 ```bash
-$ curl -X GET http://localhost:8080/api/weather                                                                           ─╯
-{"weather":"Sunshine"}
-
-$ curl -X GET http://localhost:8080/api/weather\?city\=Rosenheim                                                          ─╯
+$ curl -X GET http://localhost:8080/api/weather\?city\=Rosenheim
 {"city":"Rosenheim","weather":"Sunshine"}
+
+$ curl -X GET http://localhost:8080/
 
 $ curl -X GET http://localhost:8080/metrics
 $ curl -X GET http://localhost:8080/health
