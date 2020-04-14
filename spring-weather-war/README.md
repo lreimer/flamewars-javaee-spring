@@ -10,6 +10,8 @@ This example implements a simple weather REST service using Spring Boot (WAR).
 ```bash
 $ mvn package
 $ java -jar target/spring-weather-war-1.0.0.war
+
+$ mvn spring-boot:run
 ```
 
 ## Build and run with Docker
