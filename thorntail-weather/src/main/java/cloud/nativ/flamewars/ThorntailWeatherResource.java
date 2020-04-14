@@ -1,5 +1,7 @@
 package cloud.nativ.flamewars;
 
+import org.eclipse.microprofile.metrics.annotation.Timed;
+
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import javax.validation.constraints.NotBlank;
@@ -18,6 +20,7 @@ public class ThorntailWeatherResource {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Timed(name = "getWeather")
     public ThorntailWeather getWeather(@QueryParam("city") @NotBlank String city) {
         return repository.getWeatherForCity(city);
     }

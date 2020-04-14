@@ -1,5 +1,6 @@
 package cloud.nativ.flamewars;
 
+import io.micrometer.core.annotation.Timed;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -14,6 +15,7 @@ public class SpringWeatherController {
     private SpringWeatherRepository repository;
 
     @GetMapping("/api/weather")
+    @Timed
     public SpringWeather weather(@RequestParam(name = "city") @NotBlank String city) {
         return repository.getWeatherForCity(city);
     }
