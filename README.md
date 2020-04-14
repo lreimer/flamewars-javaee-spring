@@ -12,10 +12,10 @@ In this edition of `#Flamewars. X is better than Y!` we are devoting ourselves t
 - KumuluzEE
 - Open Liberty
 - Apache Meecrowave
-- Quarkus
 - Payara Micro
+- Quarkus
 - Spring Boot
-- Thorntail v2
+- Thorntail
 - Apache TomEE
 
 ## Load Testing
@@ -40,6 +40,10 @@ $ k6 run -u 50 -d 60s meecrowave-weather/src/test/k6/meecrowave-weather.js -o in
 $ k6 run -u 50 -d 60s payara-weather-jar/src/test/k6/payara-weather.js -o influxdb=http://localhost:8086/k6
 
 $ k6 run -u 50 -d 60s payara-weather-war/src/test/k6/payara-weather.js -o influxdb=http://localhost:8086/k6
+
+$ k6 run -u 50 -d 60s quarkus-weather-jar/src/test/k6/quarkus-weather.js -o influxdb=http://localhost:8086/k6
+
+$ k6 run -u 50 -d 60s quarkus-weather-war/src/test/k6/quarkus-weather.js -o influxdb=http://localhost:8086/k6
 
 $ k6 run -u 50 -d 60s spring-weather-jar/src/test/k6/spring-weather.js -o influxdb=http://localhost:8086/k6
 
