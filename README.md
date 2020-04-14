@@ -8,6 +8,16 @@ In this edition of `#Flamewars. X is better than Y!` we are devoting ourselves t
 
 ## The Contenders
 
+- Helidon
+- KumuluzEE
+- Open Liberty
+- Apache Meecrowave
+- Quarkus
+- Payara Micro
+- Spring Boot
+- Thorntail v2
+- Apache TomEE
+
 ## Load Testing
 
 We will use K6 to perform some simple load testing of all the contenders. First, you need to fire up InfluxDB and Grafana for metrics visualization.
