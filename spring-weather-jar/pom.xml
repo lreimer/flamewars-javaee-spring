@@ -78,6 +78,55 @@
 					<executable>true</executable>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>com.google.cloud.tools</groupId>
+				<artifactId>jib-maven-plugin</artifactId>
+				<version>2.1.0</vers    ion>
+				<!--
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>dockerBuild</goal>
+						</goals>
+					</execution>
+				</executions>
+				-->
+				<configuration>
+					<to>
+						<image>spring-weather-jar:1.0.0-jib</image>
+					</to>
+					<from>
+						<image>gcr.io/distroless/java:8</image>
+					</from>
+					<containerizingMode>exploded</containerizingMode>
+					<container>
+						<jvmFlags>
+							<jvmFlag>-server</jvmFlag>
+							<jvmFlag>-Xshare:auto</jvmFlag>
+							<jvmFlag>-XX:+UseContainerSupport</jvmFlag>
+							<jvmFlag>-XX:MaxRAMPercentage=75.0</jvmFlag>
+							<jvmFlag>-XX:ThreadStackSize=256</jvmFlag>
+							<jvmFlag>-XX:MaxMetaspaceSize=128m</jvmFlag>
+							<jvmFlag>-XX:+UseG1GC</jvmFlag>
+							<jvmFlag>-XX:MaxGCPauseMillis=250</jvmFlag>
+							<jvmFlag>-XX:+UseStringDeduplication</jvmFlag>
+							<jvmFlag>-Djava.security.egd=file:/dev/./urandom</jvmFlag>
+							<jvmFlag>-Dcom.sun.management.jmxremote</jvmFlag>
+							<jvmFlag>-Dcom.sun.management.jmxremote.port=9090</jvmFlag>
+							<jvmFlag>-Djava.rmi.server.hostname=localhost</jvmFlag>
+							<jvmFlag>-Dcom.sun.management.jmxremote.rmi.port=9090</jvmFlag>
+							<jvmFlag>-Dcom.sun.management.jmxremote.ssl=false</jvmFlag>
+							<jvmFlag>-Dcom.sun.management.jmxremote.authenticate=false</jvmFlag>
+						</jvmFlags>
+						<args/>
+						<ports>
+							<port>8080</port>
+							<port>9090</port>
+						</ports>
+					</container>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 
