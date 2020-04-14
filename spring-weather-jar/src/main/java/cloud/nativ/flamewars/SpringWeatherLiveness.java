@@ -4,10 +4,10 @@ import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.stereotype.Component;
 
-@Component
-public class SpringWeatherReadiness implements HealthIndicator {
+@Component(value = "livenessCheck")
+public class SpringWeatherLiveness implements HealthIndicator {
     @Override
     public Health health() {
-        return Health.up().build();
+        return Health.up().withDetail("live", true).build();
     }
 }
