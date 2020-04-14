@@ -1,0 +1,30 @@
+FROM oracle/graalvm-ce:19.3.1-java8 as builder
+
+RUN gu install native-image
+
+WORKDIR /quarkus
+
+COPY .mvn/ ./.mvn/
+COPY mvnw ./
+COPY pom.xml ./
+
+RUN ./mvnw dependency:resolve dependency:resolve-plugins
+
+COPY src/ src/
+RUN ./mvnw -Pnative clean package -DskipTests
+
+FROM gcr.io/distroless/base
+
+COPY --from=amd64/busybox:1.31.1 /bin/busybox /busybox/busybox
+RUN ["/busybox/busybox", "--install", "/bin"]
+
+COPY --from=debian:10 /usr/lib/x86_64-linux-gnu/libz* /usr/lib/x86_64-linux-gnu/
+COPY --from=debian:10 /lib/x86_64-linux-gnu/libz* /lib/x86_64-linux-gnu/
+
+WORKDIR /
+
+EXPOSE 8080 9090
+
+ENTRYPOINT ["/quarkus-weather-runner"]
+
+COPY --from=builder /quarkus/target/quarkus-weather-runner /
