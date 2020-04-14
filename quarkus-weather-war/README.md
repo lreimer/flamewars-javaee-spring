@@ -1,4 +1,4 @@
-# Quarkus Weather Example
+# Quarkus Weather Example (WAR)
 
 This example implements a simple weather REST service using Quarkus.
 
@@ -19,8 +19,8 @@ $ mvn quarkus:dev
 ## Build and run with Docker
 
 ```bash
-$ docker build -t quarkus-weather:1.0.0 .
-$ docker run -it --rm --cpus 2 --memory 512m -p 8080:8080 -p 9090:9090 quarkus-weather:1.0.0
+$ docker build -t quarkus-weather-war:1.0.0 .
+$ docker run -it --rm --cpus 2 --memory 512m -p 8080:8080 -p 9090:9090 quarkus-weather-war:1.0.0
 ```
 
 ## Exercise the application
