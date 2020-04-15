@@ -25,6 +25,10 @@
             <name>fish.payara.validation-classname</name>
             <value>org.glassfish.api.jdbc.validation.PostgresConnectionValidation</value>
         </property>
+        <initial-pool-size>8</initial-pool-size>
+        <max-pool-size>128</max-pool-size>
+        <min-pool-size>8</min-pool-size>
+        <max-idle-time>60</max-idle-time>
     </data-source>
 
 </web-app>
