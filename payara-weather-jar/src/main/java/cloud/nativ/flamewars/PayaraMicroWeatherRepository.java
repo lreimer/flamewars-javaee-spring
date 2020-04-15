@@ -1,38 +1,38 @@
 package cloud.nativ.flamewars;
 
-import org.eclipse.microprofile.config.inject.ConfigProperty;
+import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.transaction.Transactional;
+import java.time.LocalDateTime;
+import java.util.List;
+import java.util.Optional;
 
-import javax.annotation.PostConstruct;
-import javax.enterprise.context.ApplicationScoped;
-import javax.inject.Inject;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.concurrent.TimeUnit;
-
-// @Stateless
-@ApplicationScoped
+@Stateless
+@TransactionAttribute(TransactionAttributeType.REQUIRED)
+@Transactional
 public class PayaraMicroWeatherRepository {
 
-    private Map<String, PayaraMicroWeather> weather = new HashMap<>();
+    @PersistenceContext
+    private EntityManager em;
 
-    @Inject
-    @ConfigProperty(name = "sleep.bound", defaultValue = "250")
-    private int sleepBound;
-
-    @PostConstruct
-    void initialize() {
-        weather.put("Rosenheim", new PayaraMicroWeather("Rosenheim", "Sunshine"));
-        weather.put("London", new PayaraMicroWeather("London", "Rainy"));
+    public PayaraMicroWeather save(PayaraMicroWeather currentWeather) {
+        return em.merge(currentWeather);
     }
 
-    public PayaraMicroWeather getWeatherForCity(String city) {
-        try {
-            TimeUnit.MILLISECONDS.sleep(ThreadLocalRandom.current().nextLong(sleepBound));
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
+    public Optional<PayaraMicroWeather> findCurrentWeatherByCity(String city) {
+        TypedQuery<PayaraMicroWeather> query = em.createNamedQuery("findCurrentWeatherByCity", PayaraMicroWeather.class);
+        query.setParameter("city", city);
+        query.setParameter("now", LocalDateTime.now());
 
-        return weather.getOrDefault(city, new PayaraMicroWeather(city, "Unknown"));
+        List<PayaraMicroWeather> results = query.getResultList();
+        if (results.isEmpty()) {
+            return Optional.empty();
+        } else {
+            return Optional.of(results.get(0));
+        }
     }
 }
