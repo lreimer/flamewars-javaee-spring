@@ -5,6 +5,11 @@ services:
     build:
       context: .
     image: payara-weather-war:1.0.0
+    environment:
+      - DB_HOST=weather-db
+      - DB_USER=payara
+      - DB_PASSWORD=1qay2wsx
+      - DB_NAME=weather
     ports:
       - "8080:8080"
     labels:
@@ -19,7 +24,7 @@ services:
   weather-db:
     image: "postgres:11.6"
     environment:
-      - POSTGRES_USER=javaee
+      - POSTGRES_USER=payara
       - POSTGRES_PASSWORD=1qay2wsx
       - POSTGRES_DB=weather
     ports:

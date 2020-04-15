@@ -10,19 +10,19 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @Path("/weather")
 @ApplicationScoped
 public class PayaraMicroWeatherResource {
 
     @Inject
-    private PayaraMicroWeatherRepository repository;
+    private PayaraMicroWeatherService service;
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Timed(name = "getWeather")
-    public PayaraMicroWeather getWeather(@QueryParam("city") @NotBlank String city) {
-        return repository.getWeatherForCity(city);
+    public Response getWeather(@QueryParam("city") @NotBlank String city) {
+        return Response.ok(service.getWeatherForCity(city)).build();
     }
-
 }
