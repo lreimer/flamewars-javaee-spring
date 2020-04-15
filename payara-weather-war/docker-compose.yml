@@ -12,6 +12,7 @@ services:
       - DB_NAME=weather
     ports:
       - "8080:8080"
+      - "9090:9090"
     labels:
       kompose.service.type: loadbalancer
     deploy:
