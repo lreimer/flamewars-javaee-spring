@@ -1,0 +1,34 @@
+version: "3.7"
+
+services:
+  weather-service:
+    build:
+      context: .
+    image: payara-weather-war:1.0.0
+    ports:
+      - "8080:8080"
+    labels:
+      kompose.service.type: loadbalancer
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 512M
+          cpus: '2.0'
+
+  weather-db:
+    image: "postgres:11.6"
+    environment:
+      - POSTGRES_USER=javaee
+      - POSTGRES_PASSWORD=1qay2wsx
+      - POSTGRES_DB=weather
+    ports:
+      - "5432:5432"
+    labels:
+      kompose.service.type: nodeport
+    deploy:
+      replicas: 1
+      resources:
+        limits:
+          memory: 128M
+          cpus: '1.0'
