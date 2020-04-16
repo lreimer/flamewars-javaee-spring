@@ -14,10 +14,13 @@ $ mvn payara-micro:start
 ## Build and run with Docker
 
 ```bash
-$ docker build -t payara-weather-war:1.0.0 .
+$ docker build -t payara-weather-war:1.0.0-full .
+
 $ docker-compose up
 $ docker stack deploy -c docker-compose.yml payara-weather-war
 $ docker stack rm payara-weather-war
+
+$ docker build -t payara-weather-war:1.0.0-java11-full -f Dockerfile_java11 .
 ```
 
 ## Exercise the application

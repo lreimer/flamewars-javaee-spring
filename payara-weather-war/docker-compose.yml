@@ -4,7 +4,8 @@ services:
   weather-service:
     build:
       context: .
-    image: payara-weather-war:1.0.0
+    image: payara-weather-war:1.0.0-full
+    # image: payara-weather-war:1.0.0-java11-full
     environment:
       - DB_HOST=weather-db
       - DB_USER=payara

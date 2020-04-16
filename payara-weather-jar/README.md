@@ -1,6 +1,6 @@
 # Payara Micro Weather Example (JAR)
 
-This example implements a simple weather REST service using Mayara Micro.
+This example implements a simple weather REST service using Payara Micro.
 
 - https://start.microprofile.io
 
@@ -16,10 +16,13 @@ $ mvn payara-micro:start
 ## Build and run with Docker
 
 ```bash
-$ docker build -t payara-weather-jar:1.0.0 .
+$ docker build -t payara-weather-jar:1.0.0-full .
+
 $ docker-compose up
 $ docker stack deploy -c docker-compose.yml payara-weather-jar
 $ docker stack rm payara-weather-jar
+
+$ docker build -t payara-weather-jar:1.0.0-java11-full -f Dockerfile_java11 .
 ```
 
 ## Exercise the application
