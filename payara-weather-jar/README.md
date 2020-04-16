@@ -18,6 +18,9 @@ $ mvn payara-micro:start
 ```bash
 $ docker build -t payara-weather-jar:1.0.0 .
 $ docker run -it --rm --cpus 2 --memory 512m -p 8080:8080 -p 9090:9090 payara-weather-jar:1.0.0
+
+$ docker build -t payara-weather-jar:1.0.0-java11 -f Dockerfile_java11 .
+$ docker run -it --rm --cpus 2 --memory 512m -p 8080:8080 -p 9090:9090 payara-weather-jar:1.0.0-java11
 ```
 
 ## Exercise the application
