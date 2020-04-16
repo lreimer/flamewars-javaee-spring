@@ -18,7 +18,9 @@ $ mvn spring-boot:run
 
 ```bash
 $ docker build -t spring-weather-war:1.0.0 .
-$ docker run -it --rm --cpus 2 --memory 512m -p 8080:8080 -p 9090:9090 spring-weather-war:1.0.0
+$ docker-compose up
+$ docker stack deploy -c docker-compose.yml spring-weather-war
+$ docker stack rm spring-weather-war
 ```
 
 ## Exercise the application
