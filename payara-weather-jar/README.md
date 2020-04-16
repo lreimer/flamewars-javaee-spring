@@ -17,7 +17,9 @@ $ mvn payara-micro:start
 
 ```bash
 $ docker build -t payara-weather-jar:1.0.0 .
-$ docker run -it --rm --cpus 2 --memory 512m -p 8080:8080 -p 9090:9090 payara-weather-jar:1.0.0
+$ docker-compose up
+$ docker stack deploy -c docker-compose.yml payara-weather-jar
+$ docker stack rm payara-weather-jar
 ```
 
 ## Exercise the application
