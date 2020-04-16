@@ -12,12 +12,12 @@ import javax.validation.constraints.NotBlank;
 public class SpringWeatherController {
 
     @Autowired
-    private SpringWeatherRepository repository;
+    private SpringWeatherService service;
 
     @GetMapping("/api/weather")
     @Timed
     public SpringWeather weather(@RequestParam(name = "city") @NotBlank String city) {
-        return repository.getWeatherForCity(city);
+        return service.getWeatherForCity(city);
     }
 
 }
