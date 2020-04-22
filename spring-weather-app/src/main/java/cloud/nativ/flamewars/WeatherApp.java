@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.IntStream;
 
 public class WeatherApp {
 
@@ -18,8 +19,17 @@ public class WeatherApp {
         WeatherApp app = new WeatherApp();
         app.start();
 
-        Weather rosenheim = app.getWeather("Rosenheim");
-        LOGGER.info(rosenheim.toString());
+        // who needs for loops, right?!
+        IntStream.range(0, 3).forEach(i -> {
+            Weather rosenheim = app.getWeather("Rosenheim");
+            LOGGER.info(rosenheim.toString());
+        });
+
+        // oops, I did it again. ;)
+        IntStream.range(0, 3).forEach(i -> {
+            Weather london = app.getWeather("London");
+            LOGGER.info(london.toString());
+        });
 
         app.stop();
     }
