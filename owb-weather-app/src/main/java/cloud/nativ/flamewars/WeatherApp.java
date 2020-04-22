@@ -17,11 +17,13 @@ public class WeatherApp {
         WeatherApp app = new WeatherApp();
         app.start();
 
+        // who needs for loops, right?!
         IntStream.range(0, 3).forEach(i -> {
             Weather rosenheim = app.getWeather("Rosenheim");
             LOGGER.info(rosenheim.toString());
         });
 
+        // oops, I did it again. ;)
         IntStream.range(0, 3).forEach(i -> {
             Weather london = app.getWeather("London");
             LOGGER.info(london.toString());
